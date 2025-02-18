@@ -1,0 +1,57 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: black;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  background: black;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: azure;
+  text-align: center;
+  justify-content: center;
+}
+
+h1, h2, h3 {
+
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+
+  color: white;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+a{
+  text-align: center;
+  color: white;
+  text-decoration: none;
+}
+nav ul {
+  list-style: none;
+  text-align: center;
+}
+.ul{
+  margin-top: -1px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+.container h1 {
+  margin-top: -50px;
+}
+ li:hover{
+
+ }

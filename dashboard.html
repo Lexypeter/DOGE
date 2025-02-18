@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navbar {
+            background-color: #007BFF;
+            padding: 15px;
+            text-align: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 30px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .user-info {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .user-info p {
+            font-size: 20px;
+        }
+
+        .investment-summary {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+
+        .investment-summary div {
+            background-color: #f0f8ff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 25%;
+            text-align: center;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .transaction-section {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .transaction-section input {
+            padding: 10px;
+            width: 200px;
+            margin-right: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .transaction-section button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .transaction-section button:hover {
+            background-color: #218838;
+        }
+
+        .withdraw-btn {
+            background-color: #dc3545;
+        }
+
+        .withdraw-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <span>User Dashboard</span>
+    </div>
+
+    <div class="container">
+        <h2>Welcome, <span id="user-name">Mohammed</span></h2>
+
+        <div class="user-info">
+            <p>Your current balance: $<span id="user-balance">5000</span></p>
+        </div>
+
+        <div class="investment-summary">
+            <div>
+                <h3>Current Investment</h3>
+                <p>$<span id="current-investment">2000</span></p>
+            </div>
+            <div>
+                <h3>Total Deposited</h3>
+                <p>$<span id="total-deposited">4000</span></p>
+            </div>
+            <div>
+                <h3>Total Withdrawn</h3>
+                <p>$<span id="total-withdrawn">1000</span></p>
+            </div>
+        </div>
+
+        <div class="transaction-section">
+            <div>
+                <h3>Deposit</h3>
+                <input type="number" id="deposit-amount" placeholder="Enter amount">
+                <button onclick="depositFunds()">Deposit</button>
+            </div>
+
+            <div>
+                <h3>Withdraw</h3>
+                <input type="number" id="withdraw-amount" placeholder="Enter amount">
+                <button class="withdraw-btn" onclick="withdrawFunds()">Withdraw</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize user data
+        let userName = "Mohammed";
+        let userBalance = 5000;
+        let currentInvestment = 2000;
+        let totalDeposited = 4000;
+        let totalWithdrawn = 0;
+
+        // Update displayed user info
+        document.getElementById("user-name").innerText = userName;
+        document.getElementById("user-balance").innerText = userBalance;
+        document.getElementById("current-investment").innerText = currentInvestment;
+        document.getElementById("total-deposited").innerText = totalDeposited;
+        document.getElementById("total-withdrawn").innerText = totalWithdrawn;
+
+        // Deposit function
+        function depositFunds() {
+            let depositAmount = parseFloat(document.getElementById("deposit-amount").value);
+            if (isNaN(depositAmount) || depositAmount <= 0) {
+                alert("Please enter a valid amount to deposit.");
+                return;
+            }
+
+            // Update user balance and total deposit
+           alert("Service Timeout");
+           alert("Contact our customer service for help")
+           return ;
+        }
+
+        // Withdraw function
+        function withdrawFunds() {
+            let withdrawAmount = parseFloat(document.getElementById("withdraw-amount").value);
+            if (isNaN(withdrawAmount) || withdrawAmount <= 0) {
+                alert("Please enter a valid amount to withdraw.");
+                return;
+            }
+          
+            // Check if user has enough balance
+            if (withdrawAmount > userBalance) {
+                alert("Insufficient balance!");
+                return;
+            }
+
+            // Update user balance and total withdrawn
+          
+
+            // Update UI
+            document.getElementById("user-balance").innerText = userBalance;
+            document.getElementById("total-withdrawn").innerText = totalWithdrawn;
+               withdrawAmount  = ""
+            alert("Service Timeout");
+            
+        }
+    </script>
+
+</body>
+</html>

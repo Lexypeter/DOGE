@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
       let username = document.querySelector(".username").value.trim();
       let password = document.querySelector(".password").value.trim();
 
-      if (username === "mohammed" && password === "morishi234") {
+      if (username === "mohammad" && password === "morishi234") {
           wrongMessage.style.color = "green";
           wrongMessage.innerText = "Login successful! Redirecting...";
 

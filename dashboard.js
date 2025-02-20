@@ -1,8 +1,14 @@
 let userName = "Mohammad";
-let userBalance = 17000.09;
-let currentInvestment = 2000;
-let totalDeposited = 10000;
-let totalWithdrawn = 5000.09;
+
+let userBalance = 0;
+let balance  = 2000000.09
+userBalance = balance.toLocaleString('en-US')
+let investment =  1800000
+let currentInvestment = investment.toLocaleString('en-US');
+let deposit =  2000
+let totalDeposited = deposit.toLocaleString('en-US')
+let withdrawn =198000.09;
+let totalWithdrawn = withdrawn.toLocaleString('en-US')
 
 // Update displayed user info
 document.getElementById("user-name").innerText = userName;

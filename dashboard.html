@@ -19,12 +19,12 @@
 body {
   background-color: #121212;
   color: #ffffff;
-  margin: 0;
-  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   height: 100vh;
+  overflow: hidden;
 }
 
 .navbar {
@@ -39,7 +39,7 @@ body {
 .container {
   width: 90vw;
   max-width: 1200px;
-  height: 85vh;
+  min-height: 85vh;
   background: #1e1e1e;
   padding: 4%;
   border-radius: 12px;
@@ -47,7 +47,9 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
+  overflow-y: auto;
 }
 
 h2 {
@@ -57,50 +59,35 @@ h2 {
 
 .user-info {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .user-info p {
   font-size: 1.2em;
 }
 
-.investment-summary {
-  display: flex;
-  justify-content: space-around;
-  gap: 15px;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
-}
-
-.investment-summary div {
-  background-color: #252525;
-  padding: 20px;
-  border-radius: 8px;
-  width: 30%;
-  min-width: 200px;
-  text-align: center;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
-}
-
+.investment-summary,
 .transaction-section {
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap;
   gap: 15px;
-  margin-bottom: 20px;
-  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
+.investment-summary div,
 .transaction-section div {
-  background: #252525;
+  background-color: #252525;
   padding: 20px;
   border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-  width: 30%;
   min-width: 200px;
-  display: flex;
-  flex-direction: column;
+  text-align: center;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+  flex-grow: 1;
+  max-width: 30%;
+}
+
+.transaction-section {
   align-items: center;
 }
 
@@ -141,19 +128,20 @@ h2 {
 @media (max-width: 1024px) {
   .container {
     width: 95vw;
-    height: 90vh;
+    min-height: 90vh;
   }
 
   .investment-summary div,
   .transaction-section div {
     width: 45%;
+    max-width: 45%;
   }
 }
 
 @media (max-width: 768px) {
   .container {
     width: 98vw;
-    height: 95vh;
+    min-height: 95vh;
   }
 
   .investment-summary,
@@ -165,74 +153,490 @@ h2 {
   .investment-summary div,
   .transaction-section div {
     width: 80%;
+    max-width: 80%;
   }
 }
 
 @media (max-width: 480px) {
   .container {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     padding: 5%;
   }
 
   .investment-summary div,
   .transaction-section div {
     width: 90%;
+    max-width: 90%;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #121212;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.navbar {
+  width: 100%;
+  background-color: #007BFF;
+  padding: 15px;
+  text-align: center;
+  font-size: 18px;
+  color: white;
+}
+
+.container {
+  width: 90vw;
+  max-width: 1200px;
+  min-height: 85vh;
+  background: #1e1e1e;
+  padding: 4%;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow-y: auto;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
+.user-info {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.user-info p {
+  font-size: 1.2em;
+}
+
+.investment-summary,
+.transaction-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  width: 100%;
+  min-height: 150px;  /* Ensures these sections don’t disappear */
+}
+
+.investment-summary div,
+.transaction-section div {
+  background-color: #252525;
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 200px;
+  text-align: center;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+  flex-grow: 1;
+  max-width: 30%;
+}
+
+.transaction-section {
+  align-items: center;
+}
+
+.transaction-section input {
+  padding: 10px;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #555;
+  background: #333;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.transaction-section button {
+  padding: 10px;
+  width: 100%;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.transaction-section button:hover {
+  background-color: #218838;
+}
+
+.withdraw-btn {
+  background-color: #dc3545;
+}
+
+.withdraw-btn:hover {
+  background-color: #c82333;
+}
+
+/* Responsive Design for Height */
+
+/* For screens with height less than 800px */
+@media (max-height: 800px) {
+  .container {
+    min-height: 80vh;
+    padding: 3%;
+  }
+
+  .investment-summary div,
+  .transaction-section div {
+    width: 45%;
   }
 }
 
+/* For screens with height less than 700px */
+@media (max-height: 700px) {
+  .container {
+    min-height: 75vh;
+    padding: 2%;
+  }
 
+  h2 {
+    font-size: 1.8em;
+  }
+
+  .investment-summary div,
+  .transaction-section div {
+    width: 48%;
+    padding: 15px;
+  }
+}
+
+/* For screens with height less than 600px */
+@media (max-height: 600px) {
+  .container {
+    min-height: 70vh;
+    padding: 2%;
+    overflow-y: auto;
+  }
+
+  .investment-summary,
+  .transaction-section {
+    flex-direction: column;
+    align-items: center;
+    min-height: 200px;  /* Ensures elements remain visible */
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  .investment-summary div,
+  .transaction-section div {
+    width: 90%;
+    max-width: 90%;
+    padding: 10px;
+  }
+
+  .transaction-section input {
+    padding: 8px;
+  }
+
+  .transaction-section button {
+    padding: 8px;
+  }
+}
+
+/* For very small height (less than 500px) */
+@media (max-height: 500px) {
+  .container {
+    min-height: 60vh;
+    padding: 1%;
+    overflow-y: auto;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+
+  .investment-summary div,
+  .transaction-section div {
+    width: 95%;
+    max-width: 95%;
+    padding: 8px;
+  }
+
+  .transaction-section input {
+    padding: 6px;
+  }
+
+  .transaction-section button {
+    padding: 6px;
+  }
+}
+.user-image {
+  width: 100px; /* Small size */
+  height: 100px;
+  border-radius: 50%; /* Makes it circular */
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: 2px solid white; /* Optional border */
+}
+.dashboard {
+  position: relative;
+}
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #007BFF;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            color: white;
+        }
+
+        .container {
+            width: 90vw;
+            max-width: 1200px;
+            height: 85vh;
+            background: #1e1e1e;
+            padding: 4%;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .dashboard {
+            position: relative;
+        }
+
+        .user-image {
+            width:70px;
+            height: 70px;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            border: 2px solid white;
+            margin-right: 110%;
+            margin-top: -7%;
+            border: 2px solid white;
+            object-fit: cover; 
+            cursor: pointer;
+
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .user-info {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .user-info p {
+            font-size: 1.2em;
+        }
+
+        .investment-summary {
+            display: flex;
+            justify-content: space-around;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .investment-summary div {
+            background-color: #252525;
+            padding: 20px;
+            border-radius: 8px;
+            width: 30%;
+            min-width: 200px;
+            text-align: center;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+        }
+
+        .transaction-section {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .transaction-section div {
+            background: #252525;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            width: 30%;
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .transaction-section input {
+            padding: 10px;
+            width: 100%;
+            border-radius: 4px;
+            border: 1px solid #555;
+            background: #333;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .transaction-section button {
+            padding: 10px;
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .transaction-section button:hover {
+            background-color: #218838;
+        }
+
+        .withdraw-btn {
+            background-color: #dc3545;
+        }
+
+        .withdraw-btn:hover {
+            background-color: #c82333;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                width: 95vw;
+                height: 90vh;
+            }
+
+            .investment-summary div,
+            .transaction-section div {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 98vw;
+                height: 95vh;
+            }
+
+            .investment-summary,
+            .transaction-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .investment-summary div,
+            .transaction-section div {
+                width: 80%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 100vw;
+                height: 100vh;
+                padding: 5%;
+            }
+
+            .investment-summary div,
+            .transaction-section div {
+                width: 90%;
+            }
+        }
 </style>
 </head>
 <body>
-    <div class="navbar">
-        <span>User Dashboard</span>
+  <div class="navbar">
+    <span>User Dashboard</span>
+</div>
+
+<div class="container">
+    <div class="dashboard">
+        <img src="./mohammed.jpg" alt="User Profile" class="user-image">
+        <h2>Welcome, User!</h2>
     </div>
 
-    <div class="container">
-        <h2>Welcome, <span id="user-name">Mohammad</span></h2>
+    <h2>Welcome, <span id="user-name">Mohammad</span></h2>
 
-        <div class="user-info">
-            <p>Your current balance: $<span id="user-balance">10000</span></p>
-        </div>
+    <div class="user-info">
+        <p>Your current balance: $<span id="user-balance">10000</span></p>
+    </div>
 
-        <div class="investment-summary">
-            <div>
-                <h3>Current Investment</h3>
-                <p>$<span id="current-investment">10000</span></p>
-            </div>
-            <div>
-                <h3>Total Deposited</h3>
-                <p>$<span id="total-deposited">4000</span></p>
-            </div>
-            <div>
-                <h3>Total Interest</h3>
-                <p>$<span id="total-withdrawn">1000</span></p>
-            </div>
+    <div class="investment-summary">
+        <div>
+            <h3>Current Investment</h3>
+            <p>$<span id="current-investment">10000</span></p>
         </div>
-
-        <div class="transaction-section">
-            <div class="deposit">
-                <h3>Deposit</h3>
-                <input type="number" id="deposit-amount" placeholder="Enter amount">
-                <button onclick="depositFunds()">Deposit</button>
-            </div>
-        
-            <div class="withdraw">
-                <h3>Withdraw</h3>
-                <input type="number" id="withdraw-amount" placeholder="Enter amount" style="display: block; margin-bottom: 20px;">
-                <input type="text" id="withdraw-wallet" placeholder="Enter wallet">
-                <button class="withdraw-btn" onclick="withdrawFunds()">Withdraw</button>
-            </div>
+        <div>
+            <h3>Total Deposited</h3>
+            <p>$<span id="total-deposited">4000</span></p>
         </div>
-        
+        <div>
+            <h3>Total Interest</h3>
+            <p>$<span id="total-withdrawn">1000</span></p>
         </div>
     </div>
 
-    <script src="./dashboard.js">
-      
-        
-    </script>
+    <div class="transaction-section">
+        <div class="deposit">
+            <h3>Deposit</h3>
+            <input type="number" id="deposit-amount" placeholder="Enter amount">
+            <button onclick="depositFunds()">Deposit</button>
+        </div>
+
+        <div class="withdraw">
+            <h3>Withdraw</h3>
+            <input type="number" id="withdraw-amount" placeholder="Enter amount" style="display: block; margin-bottom: 20px;">
+            <input type="text" id="withdraw-wallet" placeholder="Enter wallet">
+            <button class="withdraw-btn" onclick="withdrawFunds()">Withdraw</button>
+        </div>
+    </div>
+</div>
+
+<script src="./dashboard.js"></script>
 
 </body>
 </html>
